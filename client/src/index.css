@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Winchester */
+@import url('https://fonts.googleapis.com/css2?family=Winchester&display=swap');
+
+/* Urbanist */
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --school-primary: #AB0534;
+  --winchester: 'Winchester', serif;
+  --urbanist: 'Urbanist', sans-serif;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
+  font-weight: bold;
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+  border: 2px solid var(--school-primary);
+}
+
+.ant-tabs .ant-tabs-tab-btn {
+  color: black !important;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.ant-table-tbody tr {
+  background-color: white !important;
+}
+.ant-list-item {
+  border: none!important;
+}
+
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+  }
+}

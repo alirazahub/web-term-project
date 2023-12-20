@@ -1,0 +1,240 @@
+<h1 class="text-2xl font-bold my-5 text-center">
+    <%= movie?.name %>
+</h1>
+<div class="flex justify-center">
+    <img src="http://localhost:5000/images/<%= movie?.poster %>" alt="Movie 4" class="h-[315px] object-cover mr-10">
+    <iframe width="600" height="315" src="https://www.youtube.com/embed/<%= movie?.trailer?.split('be/')[1]%>"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+</div>
+<div class="my-10 mx-[200px]">
+    <div>
+        <h3 class="font-bold text-[20px] text-red-800">
+            <%= movie?.name %>
+        </h3>
+        <p>
+            <%= movie?.releaseDate %>
+        </p>
+        <p>
+            <%= movie?.duration %>
+        </p>
+        <p class="bg-green-400 border-[1px] border-green-800 text-white w-20 text-center rounded-full">
+            <%= movie?.language %>
+        </p>
+        <p class="bg-red-400 mt-3 border-[1px] border-green-800 text-white w-20 text-center rounded-full">
+            <%= movie?.classification %>
+        </p>
+        <p>
+            <%= movie?.description %>
+        </p>
+    </div>
+
+    <div>
+        <h3 class="font-bold text-[20px] my-3">All Cast</h3>
+        <div class="flex justify-center">
+            <% movie?.allCast?.forEach(cast=> { %>
+                <div class="bg-white overflow-hidden flex justify-between m-5">
+                    <img src="http://localhost:5000/images/<%= cast?.id.images[0] %>" alt="Movie 4"
+                        class="w-20 h-20 object-cover rounded-full">
+                    <div class="p-4">
+                        <h3 class="text-[16px] font-semibold">
+                            <%= cast.id.firstName %>
+                                <%= cast.id.lastName %>
+                        </h3>
+                        as
+                        <p class="text-gray-600 text-[14px]">
+                            <%= cast.characterName %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+        <h3 class="font-bold text-[20px] my-3">Writer</h3>
+        <div class="flex">
+            <% movie?.writer?.forEach(cast=> { %>
+                <div class="bg-white overflow-hidden flex justify-between m-5">
+                    <img src="http://localhost:5000/images/<%= cast.images[0] %>" alt="Movie 4"
+                        class="w-20 h-20 object-cover rounded-full">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">
+                            <%= cast.firstName %>
+                                <%= cast.lastName %>
+                        </h3>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+
+        <h3 class="font-bold text-[20px] my-3">Producer</h3>
+        <div class="flex">
+            <% movie?.prducer.forEach(cast=> { %>
+                <div class="bg-white overflow-hidden flex justify-between m-5">
+                    <img src="http://localhost:5000/images/<%= cast.images[0] %>" alt="Movie 4"
+                        class="w-20 h-20 object-cover rounded-full">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">
+                            <%= cast.firstName %>
+                                <%= cast.lastName %>
+                        </h3>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+
+        <h3 class="font-bold text-[20px] my-3">Director</h3>
+        <div class="flex">
+            <% movie?.director.forEach(cast=> { %>
+                <div class="bg-white overflow-hidden flex justify-between m-5">
+                    <img src="http://localhost:5000/images/<%= cast.images[0] %>" alt="Movie 4"
+                        class="w-20 h-20 object-cover rounded-full">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">
+                            <%= cast.firstName %>
+                                <%= cast.lastName %>
+                        </h3>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <h3 class="font-bold text-[20px]">Reviews</h3>
+    <div class="flex justify-center">
+        <% if (movie?.reviews?.length===0) { %>
+            <p class="text-gray-600 text-[14px]">No reviews yet</p>
+            <% } %>
+                <div class="grid grid-cols-4 gap-10">
+                    <% movie?.reviews?.forEach(review=> { %>
+                        <div class="bg-white overflow-hidden">
+                            <img src="http://localhost:5000/images/<%= review?.user?.image %>" alt="Movie 4"
+                                class="w-20 h-20 object-cover rounded-full">
+                            <div class="p-4">
+                                <h3 class="text-xl font-semibold">
+                                    <%= review?.user?.firstName %>
+                                        <%= review?.user?.lastName %>
+                                </h3>
+                                <p class="text-gray-600 text-[14px]">
+                                    <%= review?.review %>
+                                </p>
+                                <p class="text-gray-600 text-[14px]">
+                                    <% for (let i=1; i <=review?.rating; i++) { %>
+                                        <span class=" text-yellow-500">
+                                            <i id="star-<%= i %>" class="fas fa-star text-[15px]"></i>
+                                        </span>
+                                        <% } %>
+                                            <% for (let i=review?.rating-5; i <=-1; i++) { %>
+                                                <span class=" text-gray-500">
+                                                    <i id="star-<%= i %>" class="fas fa-star text-[15px]"></i>
+                                                </span>
+                                                <% } %>
+                                </p>
+                                <% if (typeof user !=='undefined' && user && user?._id == review?.user?._id) { %>
+                                    <button onclick="deleteReview('<%= review._id %>', '<%= movie?._id %>')"
+                                        class="text-red-500 hover:text-red-600 font-semibold py-2 px-6 transition duration-300 transform hover:scale-105">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <% }%>
+
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+    </div>
+
+    <% if (typeof user !=='undefined' && user) { %>
+        <div class="">
+            <h1 class="text-[20px] font-bold">Post Your Review</h1>
+            <div id="starRating" class="flex my-4">
+                <% for (let i=1; i <=5; i++) { %>
+                    <span class="cursor-pointer text-gray-500 hover:text-yellow-500" onclick="rateMovie(<%= i %>)">
+                        <i id="star-<%= i %>" class="fas fa-star text-[40px]"></i>
+                    </span>
+                    <% } %>
+            </div>
+            <p id="ratingText" class="ml-2 text-gray-700"></p>
+            <p id="ratingText2" class="hidden"></p>
+
+            <div class="">
+                <input class="my-4 outline-none w-full p-1 h-10 border-[1px] border-gray-300" type="text"
+                    name="rating-text" id="rating-text">
+                <button onclick="postReview()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 transition duration-300 transform hover:scale-105">
+                    Post Review
+                </button>
+            </div>
+        </div>
+        <% } else { %>
+            <div class="flex justify-center my-4">
+                <a href="/login"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                    Login to post review
+                </a>
+                <% } %>
+
+
+            </div>
+</div>
+<script>
+    function rateMovie(rating) {
+        // Reset all stars to default color
+        for (let i = 1; i <= 5; i++) {
+            const star = document.getElementById(`star-${i}`);
+            star.classList.remove('text-yellow-500');
+        }
+        // Change color of selected stars
+        for (let i = 1; i <= rating; i++) {
+            const star = document.getElementById(`star-${i}`);
+            star.classList.add('text-yellow-500');
+        }
+        document.getElementById('ratingText').innerText = `(${rating} stars)`;
+        document.getElementById('ratingText2').value = rating;
+    }
+
+    function postReview() {
+        let movieId = '<%= movie?._id %>';
+        let userId = '';
+        if (typeof '<%= user %>' !== 'undefined' && '<%= user %>') {
+            userId = '<%= user?._id %>'
+        }
+        const rating = document.getElementById('ratingText2').value;
+        const review = document.getElementById('rating-text').value;
+        if (!rating || !review) return alert('Please enter a rating and review');
+        const data = {
+            rating,
+            review,
+            userId
+        };
+        fetch(`/api/admin/post-review/${movieId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.code === 400){
+                    return alert(data.message);
+                }else{
+                    window.location.reload();
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+    function deleteReview(reviewId, movieId) {
+        fetch(`/api/admin/delete-review/${movieId}/${reviewId}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                window.location.reload();
+            })
+            .catch(err => console.log(err));
+    }
+
+</script>

@@ -1,0 +1,104 @@
+.university-dashboard .custom-ul li{
+    border-radius: 0px !important;
+    border-radius: 5px!important;
+}
+.university-dashboard .ant-menu-item{
+    font-weight: 500;
+    font-size: 14px;
+    margin: 20px 0;
+}
+.university-dashboard  .ant-menu-submenu {
+    font-weight: 500;
+    font-size: 14px;
+    margin: 10px 0;
+    padding-left: 0!important;
+}
+.university-dashboard  .ant-menu-submenu .ant-menu-submenu-active:hover{
+    background-color: #FFF!important;
+    color: var(--school-primary);
+
+}
+.university-dashboard .ant-menu-submenu-selected .ant-menu-submenu-title{
+    color: var(--school-primary)!important;
+}
+.university-dashboard .ant-menu-submenu  ul{
+    background-color: #FFF!important;
+}
+.university-dashboard .ant-menu-item svg{
+    font-size: 25px;
+}
+.university-dashboard .ant-menu .ant-menu-sub li{
+    padding-left: 30px!important;
+}
+.university-dashboard .ant-menu-item:hover{
+    background-color: #FFF!important;
+    color: var(--school-primary);
+}
+.university-dashboard .ant-menu-item-selected{
+    background-color: #FFF!important;
+    color: var(--school-primary);
+}
+.university-dashboard .bottom-fixed{
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    color: #FFF !important;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+.university-dashboard .bottom-fixed span{
+    color: #FF9C6D;
+}
+.dashboard-header {
+    border-bottom: 1px solid rgba(72, 27, 58, 0.06);
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.01);
+}
+.dashboard-header input{
+    border: none;
+    height: 40px;
+    padding: 10px;
+    outline: none;
+}
+.university-dashboard .university-text{
+    font-family: var(--winchester)!important;
+}
+.university-dashboard .university-name{
+    font-family: var(--urbanist)!important;
+}
+.portal-admin-heading {
+    color: #481B3A;
+}
+.portal-admin-heading  svg{
+    margin-top: -10px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.user-icon svg{
+    color: #FFF;
+    background-color: #481B3A;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.admin-text{
+    margin-left: 10px;
+    margin-top: 16px;
+}
+.admin-name{
+    color: #171725;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 10px;
+    margin-bottom: 7px;
+
+}
+.admin-designation{
+    color: #777;
+    font-size: 14px;
+    line-height: 15px;
+    text-align: left;
+    width: 200px;
+}

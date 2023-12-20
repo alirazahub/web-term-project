@@ -1,0 +1,270 @@
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div id="profileContent" class="max-w-[800px] mx-auto">
+                <div class="flex items-center mt-10">
+                    <div class="mx-auto">
+                        <% if(user.image) { %>
+                            <img src="/images/<%= user.image %>" alt="Profile Image"
+                                class="rounded-full h-40 w-40 object-cover" id="profile-image">
+                            <% } else { %>
+                                <img src="data:image/png;base64,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"
+                                    alt="Profile Image" class="rounded-full h-40 w-40 object-cover" id="profile-image">
+                                <% } %>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center mb-10" id="change-img-btn">
+                    <label title="Change Profile Image" for="profileImage" class="cursor-pointer mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                        <i class="fas fa-camera"></i> Change
+                    </label>
+                    <input type="file" id="profileImage" name="profileImage" accept="image/*" class="hidden"
+                        onchange="previewImage(this)">
+                </div>
+                <div class="hidden flex items-center justify-center mb-10" id="change-img-btn2">
+                    <button class="cursor-pointer text-blue-500 mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600" onclick="handleUploadImage()">
+                        Upload
+                    </button>
+                </div>
+
+                <div class="flex mb-4">
+                    <div class="w-1/2 pr-2">
+                        <label for="firstName" class="form-label">First Name:</label>
+                        <input type="text" id="firstName" name="firstName"
+                            class="border rounded w-full p-2 mb-2 outline-none" value="<%= user.firstName %>" readonly>
+                    </div>
+                    <div class="w-1/2 pl-2">
+                        <label for="lastName" class="form-label">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName"
+                            class="border rounded w-full p-2 mb-2 outline-none" value="<%= user.lastName %>" readonly>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <div class="w-1/2 pr-2">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="border rounded w-full p-2 mb-2 outline-none"
+                            value="<%= user.email %>" readonly>
+                    </div>
+                    <div class="w-1/2 pl-2">
+                        <label for="gender" class="form-label">Gender:</label>
+                        <input type="text" id="gender" name="gender" class="border rounded w-full p-2 mb-2 outline-none"
+                            value="<%= user.gender %>" readonly>
+                    </div>
+                </div>
+
+                <div class="flex mb-4">
+                    <div class="w-1/2 pr-2">
+                        <label for="dateOfBirth">Date of Birth:</label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" class="border rounded w-full p-2 mb-2"
+                            value="<%= user.dateOfBirth %>" readonly>
+                    </div>
+                    <div class="w-1/2 pl-2">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address"
+                            class="border rounded w-full p-2 mb-2 outline-none" value="<%= user.address %>" readonly>
+                    </div>
+                </div>
+
+                <div class="flex mb-4">
+                    <div class="w-1/2 pr-2">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" class="border rounded w-full p-2 mb-2 outline-none"
+                            value="<%= user.city %>" readonly>
+                    </div>
+                    <div class="w-1/2 pl-2">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country"
+                            class="border rounded w-full p-2 mb-2 outline-none" value="<%= user.country %>" readonly>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <div class="w-1/2 pr-2">
+                        <label for="language">Language:</label>
+                        <input type="text" id="language" name="gender"
+                            class="border rounded w-full p-2 mb-2 outline-none" value="<%= user.language %>" readonly>
+                    </div>
+                    <div class="w-1/2 pl-2">
+
+                    </div>
+                </div>
+
+
+                <button id="editBtn" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                    <i class="fas fa-edit"></i> 
+                    Edit Profile</button>
+            </div>
+            <div id="editContent" class="hidden mt-4">
+                <!-- Editable fields -->
+                <form id="editForm" class="max-w-[800px] mx-auto">
+                    <div class="flex mb-4">
+                        <div class="w-1/2 pr-2">
+                            <label for="firstName" class="form-label">First Name:</label>
+                            <input type="text" id="firstName" name="firstName"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.firstName %>">
+                        </div>
+                        <div class="w-1/2 pl-2">
+                            <label for="lastName" class="form-label">Last Name:</label>
+                            <input type="text" id="lastName" name="lastName"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.lastName %>">
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <div class="w-1/2 pr-2">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" name="email"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.email %>">
+                        </div>
+                        <div class="w-1/2 pl-2">
+                            <label for="gender" class="form-label">Gender:</label>
+                            <select id="gender" name="gender"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500">
+                                <option value="Male" <%=user.gender==='Male' ? 'selected' : '' %>>Male</option>
+                                <option value="Female" <%=user.gender==='Female' ? 'selected' : '' %>>Female</option>
+                                <option value="Other" <%=user.gender==='Other' ? 'selected' : '' %>>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex mb-4">
+                        <div class="w-1/2 pr-2">
+                            <label for="dateOfBirth">Date of Birth:</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.dateOfBirth %>">
+                        </div>
+                        <div class="w-1/2 pl-2">
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" name="address"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.address %>">
+                        </div>
+                    </div>
+
+                    <div class="flex mb-4">
+                        <div class="w-1/2 pr-2">
+                            <label for="city">City:</label>
+                            <input type="text" id="city" name="city"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.city %>">
+                        </div>
+                        <div class="w-1/2 pl-2">
+                            <label for="country">Country:</label>
+                            <input type="text" id="country" name="country"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500"
+                                value="<%= user.country %>">
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <div class="w-1/2 pr-2">
+                            <label for="language">Language:</label>
+                            <select id="language" name="language"
+                                class="border rounded w-full p-2 mb-2 outline-none focus:border-blue-500">
+                                <option value="English" <%=user.language==='English' ? 'selected' : '' %>>English</option>
+                                <option value="Hindi" <%=user.language==='Hindi' ? 'selected' : '' %>>Hindi</option>
+                                <option value="Urdu" <%=user.language==='Urdu' ? 'selected' : '' %>>Urdu</option>
+                                <option value="Chinese" <%=user.language==='Chinese' ? 'selected' : '' %>>Chinese</option>
+                                <option value="German" <%=user.language==='German' ? 'selected' : '' %>>German</option>
+                                <option value="French" <%=user.language==='French' ? 'selected' : '' %>>French</option>
+                            </select>
+                        </div>
+                        <div class="w-1/2 pl-2">
+
+                        </div>
+                    </div>
+
+                    <button type="button" id="updateBtn"
+                        class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const handleUploadImage = async () => {
+            const image = document.getElementById("profileImage").files[0];
+            const dataa = new FormData();
+            const filename = Date.now() + image.name;
+            dataa.append("name", filename);
+            dataa.append("file", image);
+
+            await axios.post("/api/upload", dataa)
+                .then(async (response) => {
+                    if (response.data.status) {
+                        await axios.put("/api/user/change-profile-img/<%= user._id %>", { image: filename })
+                            .then(response => {
+                                if (response.data.status) {
+                                    alert("Profile image updated successfully");
+                                    window.location.reload();
+                                } else {
+                                    alert("Error updating profile image");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error updating profile image:", error);
+                                alert("Error updating profile image");
+                            });
+                    } else {
+                        alert("Error updating profile image");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error updating profile image:", error);
+                    alert("Error updating profile image");
+                });
+        }
+        function previewImage(input) {
+            const preview = document.getElementById("profile-image")
+            if (preview) {
+                const file = input.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        preview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+
+                    const element = document.getElementById("change-img-btn");
+                    const element2 = document.getElementById("change-img-btn2");
+                    if (element) {
+                        element.classList.add("hidden");
+                        element2.classList.remove("hidden");
+                    }
+                }
+            } else {
+                console.error('Profile image element not found.');
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const profileContent = document.getElementById("profileContent");
+            const editContent = document.getElementById("editContent");
+            const editBtn = document.getElementById("editBtn");
+            const updateBtn = document.getElementById("updateBtn");
+            const editForm = document.getElementById("editForm");
+
+            editBtn.addEventListener("click", function () {
+                profileContent.classList.add("hidden");
+                editContent.classList.remove("hidden");
+            });
+
+            updateBtn.addEventListener("click", function () {
+                const formData = new FormData(editForm);
+                axios.put("/api/user/profile/<%= user._id %>", Object.fromEntries(formData))
+                    .then(response => {
+                        if (response.data.status) {
+                            alert("Profile updated successfully");
+                            window.location.reload();
+                        } else {
+                            alert("Error updating profile");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error updating profile:", error);
+                        alert("Error updating profile");
+                    });
+            });
+        });
+    </script>
+</body>
