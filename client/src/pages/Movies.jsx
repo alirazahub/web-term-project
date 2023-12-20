@@ -130,7 +130,7 @@ const Movies = () => {
             render: (_, record) => (
                 <Space>
                     {record.genere.map((item) => (
-                        <div key={item._id} className='capitalize'>{item.name}</div>
+                        <div key={item?._id} className='capitalize'>{item?.name}</div>
                     ))}
                 </Space>
             ),
@@ -377,7 +377,7 @@ const Movies = () => {
                                 mode="multiple"
                             >
                                 {genres?.map((item) => (
-                                    <Option key={item._id} value={item._id}>{item.name}</Option>
+                                    <Option key={item?._id} value={item._id}>{item?.name}</Option>
                                 ))}
                             </Select>
                         </Form.Item>
