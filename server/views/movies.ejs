@@ -1,10 +1,10 @@
-<div class="flex justify-between mx-10">
+<div class="flex justify-between mx-10 items-center">
     <!-- Add this code for filters above your movie grid -->
-    <div class="flex justify-center my-4">
+    <div class="flex justify-center my-4 items-center">
         filter by:
-        <i class="fa fa-filter" aria-hidden="true"></i>
+        <i class="fa fa-filter text-blue-500" aria-hidden="true"></i>
         <label class="mx-2">Language:
-            <select id="languageFilter">
+            <select id="languageFilter" class="outline-none border-[1px] border-blue-600 w-[100px] rounded-full px-2 py-[5px]">
                 <option value="">All</option>
                 <option value="English">English</option>
                 <option value="Spanish">Spanish</option>
@@ -22,7 +22,7 @@
         </label>
 
         <label class="mx-2">Classification:
-            <select id="classificationFilter">
+            <select id="classificationFilter" class="outline-none border-[1px] border-blue-600 w-[100px] rounded-full px-2 py-[5px]">
                 <option value="">All</option>
                 <option value="PG-13">PG-13</option>
                 <option value="R">R</option>
@@ -33,7 +33,7 @@
             </select>
         </label>
 
-        <button onchange="applyFilters()"
+        <button onclick="applyFilters()"
             class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
             Apply Filters
         </button>
@@ -51,7 +51,7 @@
 <div class="m-10 grid grid-cols-2 gap-10">
     <% movies.forEach(movie=> { %>
         <div class="bg-white shadow-lg rounded-lg overflow-hidden flex justify-between">
-            <img src="http://localhost:5000/images/<%= movie.poster %>" alt="Movie 4" class=" h-72 object-cover">
+            <img src="/images/<%= movie.poster %>" alt="Movie 4" class=" h-72 object-cover">
             <div class="p-4">
                 <h3 class="text-xl font-semibold">
                     <%= movie.name %>
@@ -112,5 +112,13 @@
 
         // Redirect to the movies page with the search query
         window.location.href = `/movies?search=${encodeURIComponent(searchTerm)}`;
+    }
+
+    function applyFilters() {
+        const languageFilter = document.getElementById('languageFilter').value;
+        const classificationFilter = document.getElementById('classificationFilter').value;
+
+        // Redirect to the movies page with the search query
+        window.location.href = `/movies?language=${encodeURIComponent(languageFilter)}&classification=${encodeURIComponent(classificationFilter)}`;
     }
 </script>

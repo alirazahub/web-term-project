@@ -2,7 +2,7 @@
     <%= movie?.name %>
 </h1>
 <div class="flex justify-center">
-    <img src="http://localhost:5000/images/<%= movie?.poster %>" alt="Movie 4" class="h-[315px] object-cover mr-10">
+    <img src="/images/<%= movie?.poster %>" alt="Movie 4" class="h-[315px] object-cover mr-10">
     <iframe width="600" height="315" src="https://www.youtube.com/embed/<%= movie?.trailer?.split('be/')[1]%>"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
